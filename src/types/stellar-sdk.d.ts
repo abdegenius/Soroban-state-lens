@@ -10,4 +10,3 @@ declare module '@stellar/stellar-sdk' {
     toString(): string
   }
 }
-
