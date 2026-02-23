@@ -115,6 +115,14 @@ export function normalizeScVal(
     case ScValType.SCV_SYMBOL:
       return typeof scVal.value === 'string' ? scVal.value : ''
 
+    case ScValType.SCV_VEC:
+      // Handle vectors with recursive normalization
+      if (Array.isArray(scVal.value)) {
+        // Recursively normalize each item while preserving order
+        return scVal.value.map(item => normalizeScVal(item))
+      }
+      return []
+
     // All other variants return unsupported fallback
     default:
       return createUnsupportedFallback(scVal.switch, scVal.value)
