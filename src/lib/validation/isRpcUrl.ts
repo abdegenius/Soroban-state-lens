@@ -14,29 +14,29 @@
  */
 export function isRpcUrl(value: string): boolean {
   if (!value || value.trim() === '') {
-    return false;
+    return false
   }
 
   try {
-    const url = new URL(value);
+    const url = new URL(value)
 
     // Enforce protocol (http or https only)
     if (url.protocol !== 'http:' && url.protocol !== 'https:') {
-      return false;
+      return false
     }
 
     // Enforce host presence and basic validity
     if (!url.hostname || url.hostname.startsWith('.')) {
-      return false;
+      return false
     }
 
     // Reject credentials
     if (url.username || url.password) {
-      return false;
+      return false
     }
 
-    return true;
+    return true
   } catch {
-    return false;
+    return false
   }
 }
